@@ -48,7 +48,7 @@ config :materia, Materia.Accounts,
   password_reset_url: "hogehoge.example.com/pw-reset",
   password_reset_completed_mail_template_type: "password_reset_completed"
 
-#config :goth, config_module: MateriaFileTransfer.GoogleCloud.ConfigStub
-config :goth, config_module: MateriaFileTransfer.GoogleCloud.Config
+config :goth, config_module: MateriaFileTransfer.GoogleCloud.ConfigStub
+#config :goth, config_module: MateriaFileTransfer.GoogleCloud.Config
 
 config :materia, bucket_id: System.get_env("BUCKET_ID")
