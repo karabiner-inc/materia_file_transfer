@@ -4,7 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :materia_file_transfer, MateriaFileTransferWeb.Test.Endpoint,
   http: [port: 4001],
-  #server: false,
+  # server: false,
   debug_errors: true,
   code_reloader: false,
   check_origin: false,
@@ -26,20 +26,22 @@ config :materia_file_transfer, repo: MateriaFileTransfer.Test.Repo
 
 # Configures GuardianDB
 config :guardian, Guardian.DB,
- repo: MateriaFileTransfer.Test.Repo,
- schema_name: "guardian_tokens", # default
-#token_types: ["refresh_token"], # store all token types if not set
- sweep_interval: 60 # default: 60 minutes
+  repo: MateriaFileTransfer.Test.Repo,
+  # default
+  schema_name: "guardian_tokens",
+  # token_types: ["refresh_token"], # store all token types if not set
+  # default: 60 minutes
+  sweep_interval: 60
 
 # mail settings
-config :materia, Materia.Mails.MailClient,
-       client_module: Materia.Mail.MailClientStub
+config :materia, Materia.Mails.MailClient, client_module: Materia.Mail.MailClientStub
 
 config :sendgrid, api_key: System.get_env("SENDGRID_API_KEY") || ""
 
 config :materia, Materia.Accounts,
   system_from_email: "team_bi@karabiner.tech",
-  system_from_name: "カラビナテクノロジーテスト事務局", # not effect when use Materia.Mails.MailClientAwsSes
+  # not effect when use Materia.Mails.MailClientAwsSes
+  system_from_name: "カラビナテクノロジーテスト事務局",
   user_registration_request_mail_template_type: "user_registration_request",
   user_registration_url: "hogehoge.example.com/user-registration",
   user_registration_completed_mail_template_type: "user_registration_completed",
@@ -49,6 +51,6 @@ config :materia, Materia.Accounts,
   password_reset_completed_mail_template_type: "password_reset_completed"
 
 config :goth, config_module: MateriaFileTransfer.GoogleCloud.ConfigStub
-#config :goth, config_module: MateriaFileTransfer.GoogleCloud.Config
+# config :goth, config_module: MateriaFileTransfer.GoogleCloud.Config
 
 config :materia, bucket_id: System.get_env("BUCKET_ID")
