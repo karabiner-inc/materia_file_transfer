@@ -62,4 +62,16 @@ defmodule MateriaFileTransfer.GoogleCloud.Storage do
       bucket_id
     end
   end
+
+  @doc false
+  def download(storage_path, file_path) do
+    {:ok, tesla} = GoogleApi.Storage.V1.Api.Objects.storage_objects_get(
+      get_connection(),
+      get_bucket_id(),
+      storage_path,
+      [{:alt, "media"}],
+      [{:decode, false}]
+    )
+    :ok = File.write!(file_path, tesla.body)
+  end
 end
