@@ -3,12 +3,12 @@ defmodule MateriaFileTransfer.GoogleCloud.ConfigStub do
   use Goth.Config
 
   def init(config) do
-    {:ok, json} = Poison.encode(
-      %{
+    {:ok, json} =
+      Poison.encode(%{
         project_id: "",
-        private_key: "",
-      }
-    )
+        private_key: ""
+      })
+
     {:ok, Keyword.put(config, :json, json)}
   end
 end
