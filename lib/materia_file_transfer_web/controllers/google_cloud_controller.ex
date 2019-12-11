@@ -3,7 +3,7 @@ defmodule MateriaFileTransferWeb.GoogleCloudController do
 
   alias MateriaFileTransfer.GoogleCloud.Storage
 
-  action_fallback MateriaWeb.FallbackController
+  action_fallback(MateriaWeb.FallbackController)
 
   def upload_file_public(conn, params) do
     upload = Storage.upload_file_public(params)

@@ -4,7 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :materia_file_transfer, MateriaFileTransferWeb.Test.Endpoint,
   http: [port: 4001],
-  #server: false,
+  # server: false,
   debug_errors: true,
   code_reloader: false,
   check_origin: false,
@@ -26,7 +26,9 @@ config :materia_file_transfer, repo: MateriaFileTransfer.Test.Repo
 
 # Configures GuardianDB
 config :guardian, Guardian.DB,
- repo: MateriaFileTransfer.Test.Repo,
- schema_name: "guardian_tokens", # default
-#token_types: ["refresh_token"], # store all token types if not set
- sweep_interval: 60 # default: 60 minutes
+  repo: MateriaFileTransfer.Test.Repo,
+  # default
+  schema_name: "guardian_tokens",
+  # token_types: ["refresh_token"], # store all token types if not set
+  # default: 60 minutes
+  sweep_interval: 60

@@ -6,16 +6,14 @@
 use Mix.Config
 
 # General application configuration
-config :materia_file_transfer,
-  ecto_repos: [MateriaFileTransfer.Test.Repo]
+config :materia_file_transfer, ecto_repos: [MateriaFileTransfer.Test.Repo]
 
 # Configures the endpoint
 config :materia_file_transfer, MateriaFileTransferWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "xAeVCjjYbPDJQW5oou/zXYHs9KpzNG3XOO/zZuEFxKpTCAwc09sEm9REdzlGPqnE",
   render_errors: [view: MateriaFileTransferWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: MateriaFileTransfer.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: MateriaFileTransfer.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -24,8 +22,10 @@ config :logger, :console,
 
 # Configures Materia.Authenticator
 config :materia, Materia.Authenticator,
-  access_token_ttl: {10, :minutes}, #必須
-  refresh_token_ttl: {1, :days}, # refresh_tokenを定義しない場合sign-inはaccess_tokenのみ返す
+  # 必須
+  access_token_ttl: {10, :minutes},
+  # refresh_tokenを定義しない場合sign-inはaccess_tokenのみ返す
+  refresh_token_ttl: {1, :days},
   user_registration_token_ttl: {35, :minutes},
   password_reset_token_ttl: {35, :minutes}
 
@@ -42,15 +42,17 @@ config :materia, Materia.AccountAuthenticator,
   allowed_algos: ["HS256"]
 
 config :guardian, Guardian.DB,
-  repo: MateriaFileTransfer.Test.Repo,  #<- mod your app repo
-  schema_name: "guardian_tokens", # default
-  #token_types: ["refresh_token"], # store all token types if not set
-  sweep_interval: 60 # default: 60 minutes
+  # <- mod your app repo
+  repo: MateriaFileTransfer.Test.Repo,
+  # default
+  schema_name: "guardian_tokens",
+  # token_types: ["refresh_token"], # store all token types if not set
+  # default: 60 minutes
+  sweep_interval: 60
 
 # Configures gettext for Materia
 config :materia, :repo, MateriaFileTransfer.Test.Repo
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
-
+import_config "#{Mix.env()}.exs"

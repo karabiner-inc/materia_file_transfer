@@ -12,7 +12,7 @@ defmodule MateriaFileTransfer.Test.Application do
       # Start the Ecto repository
       supervisor(MateriaFileTransfer.Test.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(MateriaFileTransferWeb.Test.Endpoint, []),
+      supervisor(MateriaFileTransferWeb.Test.Endpoint, [])
       # Start your own worker by calling: MateriaFileTransfer.Worker.start_link(arg1, arg2, arg3)
       # worker(MateriaFileTransfer.Worker, [arg1, arg2, arg3]),
       # worker(Guardian.DB.Token.SweeperServer, [])
